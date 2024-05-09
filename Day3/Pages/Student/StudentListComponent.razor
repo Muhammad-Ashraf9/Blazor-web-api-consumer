@@ -1,0 +1,89 @@
+﻿@page "/students"
+
+
+@if (StudentList == null || StudentList.Count == 0)
+{
+    <div class="alert alert-warning w-25 mx-auto">
+        No Students found
+    </div>
+
+}
+else
+{
+
+    <div class="table-responsive">
+        <table class="table table-borderless table-hover table-dark">
+            <thead>
+                <tr class="text-capitalize text-warning">
+                    <th>
+                        Id
+                    </th>
+                    <th>
+                        First Name
+                    </th>
+                    <th>
+                        Last Name
+                    </th>
+
+                    <th>
+                        Address
+                    </th>
+                    <th>
+                        Age
+                    </th>
+                    <th>
+                        Department
+                    </th>
+                    <th>
+                        Supervisor
+                    </th>
+                    <th>
+                        Action
+                    </th>
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (StudentResponseModel student in StudentList)
+                {
+                    <tr>
+                        <td>
+                            @student.StId
+
+                        </td>
+                        <td>
+                            @student.StFname
+                        </td>
+                        <td>
+                            @student.StLname
+                        </td>
+                        <td>
+                            @student.StAddress
+                        </td>
+                        <td>
+                            @student.StAge
+                        </td>
+                        <td>
+                            @student.DeptName
+                        </td>
+                        <td>
+                            @student.StSuper
+                        </td>
+                        <td>
+
+                            <a href="/students/@student.StId" class="btn btn-outline-success">
+                                Details
+                            </a>
+                            <a href="/students/edit/@student.StId" class="btn btn-outline-warning">
+                                Edit
+                            </a>
+
+                        </td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+    </div>
+}
+

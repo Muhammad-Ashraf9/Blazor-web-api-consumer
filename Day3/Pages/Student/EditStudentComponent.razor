@@ -1,0 +1,73 @@
+﻿@page "/students/edit/{id:int}"
+<div class="container-fluid">
+    <div class="row">
+        @if (!IsUpdatedSuccessfully)
+        {
+            <div class="alert alert-danger px-5 text-danger">
+                Error updating student data, please Enter Valid data
+            </div>
+        }
+
+
+        @if (Student == null)
+        {
+            <div class="alert alert-warning w-25 mx-auto">
+                No Student found
+            </div>
+        }
+        else
+        {
+
+            <EditForm Model="Student" class="mx-auto" OnValidSubmit="Save" OnInvalidSubmit="() => IsUpdatedSuccessfully = false">
+                <DataAnnotationsValidator></DataAnnotationsValidator>
+                <div class="form-group mb-5">
+                    <label for="FName" class="form-label">
+                        First Name:
+                    </label>
+                    <InputText @bind-Value="Student.StFname" class="form form-control" />
+                    <ValidationMessage For="() => Student.StFname"></ValidationMessage>
+                </div>
+                <div class="form-group mb-5">
+                    <label for="LName" class="form-label">
+                        Last Name:
+                    </label>
+                    <InputText @bind-Value="Student.StLname" class="form form-control" />
+                    <ValidationMessage For="() => Student.StLname"></ValidationMessage>
+                </div>
+                <div class="form-group mb-5">
+                    <label for="Age" class="form-label">
+                        Age:
+                    </label>
+                    <InputNumber @bind-Value="Student.StAge" class="form form-control" />
+                    <ValidationMessage For="() => Student.StAge"></ValidationMessage>
+                </div>
+                <div class="form-group mb-5">
+                    <label for="Address" class="form-label">
+                        Address:
+                    </label>
+                    <InputText @bind-Value="Student.StAddress" class="form form-control" />
+                    <ValidationMessage For="() => Student.StAddress"></ValidationMessage>
+                </div>
+                <div class="form-group mb-5">
+                    <label for="Dept" class="form-label">
+                        Department:
+                    </label>
+                    <InputSelect @bind-Value="Student.DeptId" class="form form-control">
+                        @foreach (var dept in DepartmentList)
+                        {
+                            <option value="@dept.DeptId">@dept.DeptName</option>
+                        }
+                    </InputSelect>
+                    <ValidationMessage For="() => Student.DeptId"></ValidationMessage>
+                </div>
+
+                <div>
+                    <input type="submit" class="btn btn-primary mx-auto" value="Save"/>
+                    <a class="btn btn-warning mx-auto"> Cancel </a>
+                </div>
+            </EditForm>
+        }
+        
+        @Student.DeptId
+    </div>
+</div>

@@ -1,0 +1,76 @@
+﻿
+@page "/students/{id:int}"
+
+@if (Student == null)
+{
+    <div class="alert alert-warning w-25 mx-auto">
+        No Student found
+    </div>
+}
+else
+{
+    <div class="card w-50 mx-auto">
+        <div class="card-header bg-warning text-white">
+            Student Details
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-4">
+                    <img src="https://i.pravatar.cc/300" class="img-thumbnail"
+                         alt="Student Photo" />
+                </div>
+                <div class="col-8">
+                    <div class="row">
+                        <div class="col-4">
+                            <strong>First Name:</strong>
+                        </div>
+                        <div class="col-8">
+                            @Student.StFname
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-4">
+                            <strong>Last Name:</strong>
+                        </div>
+                        <div class="col-8">
+                            @Student.StLname
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-4">
+                            <strong>Address:</strong>
+                        </div>
+                        <div class="col-8">
+                            @Student.StAddress
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-4">
+                            <strong>Age:</strong>
+                        </div>
+                        <div class="col-8">
+                            @Student.StAge
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-4">
+                            <strong>Department:</strong>
+                        </div>
+                        <div class="col-8">
+                            @Student.DeptName
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-4">
+                            <strong>Supervisor:</strong>
+                        </div>
+                        <div class="col-8">
+                            @Student.StSuper
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
